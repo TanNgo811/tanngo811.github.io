@@ -25,16 +25,16 @@ var swiper1 = new Swiper(".album-slide", {
  Fancybox.bind("[data-fancybox]", {
 
  });
- 
+
 //AUDIO
 $(".toggleAudio").on("click",function(){
     $(this).find("img").attr("src", function(index, attr){
-        return attr === './folder/volume.png' ? './folder/volume-off.png' : './folder/volume.png';
+        return attr === './files/volume.png' ? './files/volume-off.png' : './files/volume.png';
     });
   audio = $("#audio")
-  audio[0].paused ? 
+  audio[0].paused ?
   audio[0].play()
-  : 
+  :
   audio[0].pause();
   })
 
