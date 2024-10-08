@@ -1,6 +1,6 @@
 .blur-bg {
-	-webkit-backdrop-filter: blur(5px);
-  	backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 #audio {
@@ -9,11 +9,11 @@
 
 }
 
- /* AUDIO */
+/* AUDIO */
 
- #audio {display:none}
+#audio {display:none}
 
- .toggleAudio {
+.toggleAudio {
 
     position: fixed;
 
@@ -37,9 +37,9 @@
 
     cursor: pointer;
 
-    }
+}
 
-    .toggleAudio i {color:white;}
+.toggleAudio i {color:white;}
 
 .section-des {
 
@@ -71,11 +71,11 @@
 
 }
 
- /* TIN NHẮN */
+/* TIN NHẮN */
 
 
 
- .input-group {
+.input-group {
 
     display: flex;
 
@@ -131,7 +131,7 @@
 
 .message-container {
 
-    
+
 
     display: grid;
 
@@ -159,7 +159,7 @@
 
     overflow-y: auto;
 
-   max-height: 500px;
+    max-height: 500px;
 
 }
 
@@ -293,36 +293,22 @@
 
     padding: 80px 0;
 
-    
+
 
 }
 
 .form .section-title {
 
-  color: var(--primary-color)
+    color: var(--primary-color)
 
 }
 
 #form-wedding {
-
     width: 680px;
-
     max-width: 90%;
-
-    background-color: whitesmoke;
-
     padding: 20px;
-
     text-align: center;
-
     margin: 0 auto;
-
-    background-position: center center;
-
-    background-repeat: no-repeat;
-
-    background-size: cover;
-
     border-radius:12px;
 
 }
@@ -367,7 +353,7 @@
 
 .radio-container .tooltip {
 
-  position: absolute;
+    position: absolute;
 
     top: -32px;
 
@@ -397,15 +383,15 @@
 
 .radio-container:hover .tooltip {
 
-  display:block;
+    display:block;
 
-  opacity:1;
+    opacity:1;
 
 }
 
 .radio-container {
 
-  cursor: pointer;
+    cursor: pointer;
 
 }
 
@@ -472,27 +458,26 @@
 }
 
 .group-input {
-
     position: relative;
-
     display: flex;
-
-    gap: 6px;
-
+    width: 100%;
     flex-direction: column;
-
     margin-top: 20px;
 
 }
 
 .group-input input {
 
-    border: 1px solid rgb(176, 176, 176);
+    border: 1px solid var(--primary-color);
 
     padding: 8px 20px;
 
     text-align: left;
+}
 
+.group-input input::placeholder {
+    color: #a9a9a9; /* Change this to your desired color */
+    opacity: 1; /* For older browsers */
 }
 
 input[type='radio'] {
@@ -506,29 +491,37 @@ input[type='radio'] {
 }
 
 textarea {
-
-    border: 1px solid rgb(176, 176, 176);
-
-    color: black;
-
+    border-radius: 6px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
     text-align: left;
-
-    padding: 20px;
-
-    max-width:90%;
-
+    padding: 10px 20px;
     margin:0 auto;
+}
 
+textarea::placeholder {
+    color: #a9a9a9; /* Change this to your desired color */
+    opacity: 1; /* For older browsers */
+}
+
+label {
+    color: var(--primary-color);
+    margin-bottom: 8px;
 }
 
 .group-select {
-
     position: relative;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    width: 100%;
 
-    max-width: max-content;
+}
 
-    margin: 12px auto;
-
+.group-select-main {
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .group-select #num_user {
@@ -615,11 +608,11 @@ select {
 
     background-image: linear-gradient(
 
-        to top,
+            to top,
 
-        var(--bg),
+            var(--bg),
 
-        #fff
+            #fff
 
 
 
@@ -685,7 +678,7 @@ select {
 
 .gift-qr {
 
-   max-width: 300px;
+    max-width: 300px;
 
 }
 
@@ -839,8 +832,8 @@ select {
 .dress-content {
     order: 0;
     text-align: right;
-   box-sizing: border-box;
-   word-wrap: break-word;
+    box-sizing: border-box;
+    word-wrap: break-word;
 
 }
 .dress-content p {
@@ -851,7 +844,7 @@ select {
     order: 3;
 }
 .dress-content {
-   
+
 }
 .dress-item::before {
     content: "";
@@ -863,8 +856,8 @@ select {
     margin: 0 auto;
 }
 .dress-media img {
-max-width: 100px;
-aspect-ratio: 1/1;
+    max-width: 100px;
+    aspect-ratio: 1/1;
 }
 .dress-time {
     font-size: clamp(16px , 16px + 1vw , 20px);
@@ -883,7 +876,7 @@ aspect-ratio: 1/1;
         z-index: -1;
         opacity: .8;
         top: 50%;
-        
+
     }
     .dress-container {
         flex-direction: row;
@@ -901,10 +894,10 @@ aspect-ratio: 1/1;
     .dress-content {
         text-align: center;
     }
-    
+
 }
 .section-countdown {
-	padding: 120px 0;
+    padding: 120px 0;
 }
 /* footer */
 
