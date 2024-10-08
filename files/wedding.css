@@ -496,7 +496,6 @@ textarea {
     color: var(--primary-color);
     text-align: left;
     padding: 10px 20px;
-    margin:0 auto;
 }
 
 textarea::placeholder {
