@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/index.css'
+import Navbar from './components/navbar'
+import CTA from './components/cta'
+import Features from "@/components/features.tsx";
+import Footer from './components/footer'
+import Hero from "@/components/hero.tsx";
+import MouseMoveEffect from "@/components/mouse-move-effect.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <html lang="en" className="dark">
+      <body className={`bg-background text-foreground antialiased transition-colors duration-200`}>
+        <MouseMoveEffect />
+        <div className="relative min-h-screen">
+          {/* Background gradients */}
+          <div className="pointer-events-none fixed inset-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+            <div className="absolute right-0 top-0 h-[500px] w-[500px] bg-blue-500/10 blur-[100px]" />
+            <div className="absolute bottom-0 left-0 h-[500px] w-[500px] bg-purple-500/10 blur-[100px]" />
+          </div>
+
+          <div className="relative z-10">
+            <Navbar />
+            <Hero />
+            <Features />
+            <CTA />
+            <Footer />
+          </div>
+        </div>
+      </body>
+    </html>
   )
 }
 
