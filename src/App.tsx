@@ -1,5 +1,5 @@
 import './styles/index.css'
-import Navbar from './components/navbar'
+import {Navbar as NavigationBar} from './components/navbar'
 import CTA from './components/cta'
 import Features from "@/components/features.tsx";
 import Footer from './components/footer'
@@ -20,7 +20,7 @@ function App() {
           </div>
 
           <div className="relative z-10">
-            <Navbar />
+            <NavigationBar />
             <Hero />
             <Features />
             <CTA />
