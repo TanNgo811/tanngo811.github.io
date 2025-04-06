@@ -1,9 +1,11 @@
 import {Button} from "@/components/ui/button"
 import {Github, Menu, X} from "lucide-react"
 import {useCallback, useState} from "react";
+import {useNavigate} from "react-router";
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const navigate = useNavigate();
 
     const tableOfContents = [
         {
@@ -21,11 +23,13 @@ export function Navbar() {
     ]
 
     const handleLogin = useCallback(() => {
+        navigate('/login')
         setIsMenuOpen(false)
-    }, [])
+    }, [navigate])
     const handleSignUp = useCallback(() => {
+        navigate('/signup')
         setIsMenuOpen(false)
-    }, [])
+    }, [navigate])
 
     return (
         <>

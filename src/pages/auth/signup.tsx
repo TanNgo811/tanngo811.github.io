@@ -5,7 +5,7 @@ import {Label} from "@/components/ui/label.tsx"
 import {Checkbox} from "@/components/ui/checkbox.tsx"
 import {Check, Eye, EyeOff, X} from "lucide-react"
 
-export default function GitHubInspiredSignup() {
+export default function SignUp() {
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
