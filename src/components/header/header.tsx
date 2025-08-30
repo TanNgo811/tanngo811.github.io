@@ -1,7 +1,6 @@
 // src/components/custom/header.tsx
 'use client';
 
-import { useUserStore } from '@/lib/store';
 import { HelpCircle, ChevronDown, Search, User, LogOut } from 'lucide-react';
 import {
 	DropdownMenu,
@@ -14,12 +13,13 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { useAuthStore } from '@/data-access/app.state';
 
 export default function Header() {
-	const { user, setUser } = useUserStore();
+	const { user, setUser } = useAuthStore();
 
 	const handleLogout = () => {
-		setUser(null);
+		setUser(undefined);
 	};
 
 	return (
@@ -45,11 +45,11 @@ export default function Header() {
 						<DropdownMenuTrigger asChild>
 							<Button variant="ghost" className="flex items-center gap-2 text-sm focus-visible:ring-0">
 								<div className="text-right">
-									<div className="font-semibold text-gray-800">{user.name}</div>
-									<div className="text-xs text-gray-500">{user.company}</div>
+									<div className="font-semibold text-gray-800">{'ABC'}</div>
+									<div className="text-xs text-gray-500">{'ABC Corp'}</div>
 								</div>
 								<div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 font-semibold text-gray-600">
-									<span>{user.initials}</span>
+									<span>ABC</span>
 								</div>
 							</Button>
 						</DropdownMenuTrigger>
