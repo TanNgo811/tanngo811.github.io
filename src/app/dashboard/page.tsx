@@ -2,6 +2,8 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import LogoutButton from '@/components/ui/logout-button'
+import DeleteButton from '@/components/ui/delete-button'
 
 async function getUserPosts(userId: string) {
   return await prisma.posts.findMany({
@@ -42,15 +44,7 @@ export default async function Dashboard() {
               >
                 New Post
               </Link>
-              <button
-                onClick={async () => {
-                  await fetch('/api/auth/logout', { method: 'POST' })
-                  window.location.href = '/'
-                }}
-                className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500"
-              >
-                Logout
-              </button>
+              <LogoutButton />
             </div>
           </div>
 
@@ -89,17 +83,7 @@ export default async function Dashboard() {
                           >
                             Edit
                           </Link>
-                          <button
-                            onClick={async () => {
-                              if (confirm('Are you sure you want to delete this post?')) {
-                                await fetch(`/api/posts/${post.id}`, { method: 'DELETE' })
-                                window.location.reload()
-                              }
-                            }}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Delete
-                          </button>
+                          <DeleteButton postId={post.id.toString()} />
                         </div>
                       </div>
                     </div>

@@ -2,9 +2,18 @@ import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
-async function getPost(slug: string) {
+async function getPost({
+  slug,
+  id,
+}: {
+  slug: string,
+  id: string,
+}) {
   const post = await prisma.posts.findUnique({
-    where: { slug: slug },
+    where: { 
+      slug: slug,
+      id: BigInt(id),
+    },
     include: {
       users: {
         select: {
@@ -30,10 +39,16 @@ async function getPost(slug: string) {
 export default async function BlogPost({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ post_slug: string }>
 }) {
-  const { slug } = await params
-  const post = await getPost(slug)
+  const { post_slug } = await params
+  const lastHyphenIndex = post_slug.lastIndexOf('-')
+  const slug = post_slug.substring(0, lastHyphenIndex)
+  const id = post_slug.substring(lastHyphenIndex + 1)
+  if (!slug || !id || isNaN(Number(id))) {
+    notFound()
+  }
+  const post = await getPost({ slug, id })
 
   return (
     <div className="min-h-screen bg-gray-50">
