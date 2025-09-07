@@ -13,13 +13,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { useAuthStore } from '@/data-access/app.state';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
-	const { user, setUser } = useAuthStore();
+	const router = useRouter();
 
-	const handleLogout = () => {
-		setUser(undefined);
+	const handleLogout = async () => {
+		await fetch('/api/auth/logout', { method: 'POST' });
+		router.push('/');
 	};
 
 	return (
@@ -36,40 +37,22 @@ export default function Header() {
 					<HelpCircle className="h-6 w-6" />
 				</Button>
 				<Button variant="outline" className="gap-2">
-					<span>321312312He3213llo13</span>
+					<span>Blog Platform</span>
 					<ChevronDown className="h-4 w-4" />
 				</Button>
 
-				{user ? (
-					<DropdownMenu>
-						<DropdownMenuTrigger asChild>
-							<Button variant="ghost" className="flex items-center gap-2 text-sm focus-visible:ring-0">
-								<div className="text-right">
-									<div className="font-semibold text-gray-800">{'ABC'}</div>
-									<div className="text-xs text-gray-500">{'ABC Corp'}</div>
-								</div>
-								<div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 font-semibold text-gray-600">
-									<span>ABC</span>
-								</div>
-							</Button>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent className="w-48">
-							<DropdownMenuLabel>My Account</DropdownMenuLabel>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem asChild>
-								<Link href="#"><User className="mr-2 h-4 w-4" /><span>Profile</span></Link>
-							</DropdownMenuItem>
-							<DropdownMenuItem onClick={handleLogout}>
-								<LogOut className="mr-2 h-4 w-4" />
-								<span>Log out</span>
-							</DropdownMenuItem>
-						</DropdownMenuContent>
-					</DropdownMenu>
-				) : (
+				<div className="flex items-center gap-2">
 					<Button asChild variant="outline">
-						<Link href="/login">Log In</Link>
+						<Link href="/blog">Blog</Link>
 					</Button>
-				)}
+					<Button asChild variant="outline">
+						<Link href="/dashboard">Dashboard</Link>
+					</Button>
+					<Button onClick={handleLogout} variant="outline">
+						<LogOut className="mr-2 h-4 w-4" />
+						Log out
+					</Button>
+				</div>
 			</div>
 		</header>
 	);

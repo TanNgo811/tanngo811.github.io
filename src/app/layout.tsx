@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Paperlogic Dashboard',
-	description: 'Dashboard UI built with Next.js',
+	title: 'Blog Platform',
+	description: 'A full-stack blogging platform built with Next.js',
 };
 
 export default function RootLayout({
