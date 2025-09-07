@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { transliterateVietnamese } from '@/lib/utils'
 
 // Helper function to serialize objects with BigInt
-function serialize(obj: any): any {
+function serialize(obj: object): string {
   return JSON.parse(JSON.stringify(obj, (key, value) =>
     typeof value === 'bigint' ? value.toString() : value
   ))
