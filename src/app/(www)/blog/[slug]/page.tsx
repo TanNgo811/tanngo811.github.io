@@ -2,9 +2,9 @@ import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
-async function getPost(id: string) {
+async function getPost(slug: string) {
   const post = await prisma.posts.findUnique({
-    where: { id: BigInt(id) },
+    where: { slug: slug },
     include: {
       users: {
         select: {
@@ -30,10 +30,10 @@ async function getPost(id: string) {
 export default async function BlogPost({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ slug: string }>
 }) {
-  const { id } = await params
-  const post = await getPost(id)
+  const { slug } = await params
+  const post = await getPost(slug)
 
   return (
     <div className="min-h-screen bg-gray-50">

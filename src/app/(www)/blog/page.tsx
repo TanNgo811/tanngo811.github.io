@@ -61,7 +61,7 @@ export default async function Blog() {
 
                     <h2 className="mt-2 text-xl font-semibold text-gray-900">
                       <Link
-                        href={`/blog/${post.id}`}
+                        href={`/blog/${post.slug}`}
                         className="hover:text-indigo-600"
                       >
                         {post.title}
@@ -74,7 +74,7 @@ export default async function Blog() {
 
                     <div className="mt-4">
                       <Link
-                        href={`/blog/${post.id}`}
+                        href={`/blog/${post.slug}`}
                         className="text-indigo-600 hover:text-indigo-500"
                       >
                         Read more →
