@@ -2,7 +2,7 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 import { prisma } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(_request: NextRequest) {
+export async function GET(_: NextRequest) {
   try {
     const supabase = await createServerSupabaseClient()
     const { data: { user }, error } = await supabase.auth.getUser()
