@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { useAuth } from '@/hooks/use-auth'
-import { useUIStore } from '@/store/ui'
+import { Button } from '@/features/ui/components/button'
+import { useAuth } from '@/features/auth/hooks/use-auth'
+import { useUIStore } from '@/features/ui/store/ui'
 import { 
   PenTool, 
   Home, 
@@ -16,7 +16,7 @@ import {
   Search,
   Bell
 } from 'lucide-react'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/features/ui/components/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +24,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/features/ui/components/dropdown-menu'
 
 const navigation = [
   { name: 'Home', href: '/', icon: Home },

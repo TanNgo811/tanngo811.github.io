@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { PenTool, Github, Twitter, Linkedin } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
+import { Button } from '@/features/ui/components/button'
+import { Separator } from '@/features/ui/components/separator'
 
 const footerLinks = {
   product: [

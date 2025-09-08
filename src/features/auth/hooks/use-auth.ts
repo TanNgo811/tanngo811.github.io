@@ -1,73 +1,66 @@
-import { useAuthStore } from '@/store/auth'
+import { useAuthStore } from '@/features/auth/store/auth'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export function useAuth() {
   const { user, isAuthenticated, isLoading, setUser, setLoading, logout, checkAuth } = useAuthStore()
-  
+
   const login = async (email: string, password: string) => {
     try {
       setLoading(true)
-      
+
       const response = await fetch('/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ email, password }),
       })
 
       if (response.ok) {
         const { user } = await response.json()
         setUser(user)
-        return { success: true, user }
+        return { success: true }
       } else {
         const { error } = await response.json()
         return { success: false, error }
       }
     } catch (error) {
-      console.log('Login error:', error)
-      return { success: false, error: 'An unexpected error occurred' }
+      return { success: false, error: 'An error occurred during login' }
     } finally {
       setLoading(false)
     }
   }
 
-  const signup = async (userData: {
-    email: string
-    password: string
-    first_name: string
-    last_name: string
-  }) => {
+  const signup = async (userData: { email: string; password: string; firstName: string; lastName: string }) => {
     try {
       setLoading(true)
-      
+
       const response = await fetch('/api/auth/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: userData.email,
+          password: userData.password,
+          firstName: userData.firstName,
+          lastName: userData.lastName
+        }),
       })
 
       if (response.ok) {
         const { user } = await response.json()
         setUser(user)
-        return { success: true, user }
+        return { success: true }
       } else {
         const { error } = await response.json()
         return { success: false, error }
       }
     } catch (error) {
-      return { success: false, error: 'An unexpected error occurred' }
+      return { success: false, error: 'An error occurred during signup' }
     } finally {
       setLoading(false)
-    }
-  }
-
-  const signOut = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' })
-    } catch (error) {
-      console.error('Logout error:', error)
-    } finally {
-      logout()
     }
   }
 
@@ -77,20 +70,7 @@ export function useAuth() {
     isLoading,
     login,
     signup,
-    logout: signOut,
+    logout,
     checkAuth,
   }
-}
-
-export function useRequireAuth() {
-  const { isAuthenticated, isLoading } = useAuth()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      router.push('/login')
-    }
-  }, [isAuthenticated, isLoading, router])
-
-  return { isAuthenticated, isLoading }
 }

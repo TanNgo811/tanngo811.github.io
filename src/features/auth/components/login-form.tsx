@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Spinner } from '@/components/ui/spinner'
-import { useAuth } from '@/hooks/use-auth'
+import { Button } from '@/features/ui/components/button'
+import { Input } from '@/features/ui/components/input'
+import { Label } from '@/features/ui/components/label'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/features/ui/components/card'
+import { Spinner } from '@/features/ui/components/spinner'
+import { useAuth } from '@/features/auth/hooks/use-auth'
 import { Eye, EyeOff, LogIn } from 'lucide-react'
 
 export function LoginForm() {

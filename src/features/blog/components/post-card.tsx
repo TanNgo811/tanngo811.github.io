@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Card, CardContent, CardHeader } from '@/features/ui/components/card'
+import { Badge } from '@/features/ui/components/badge'
+import { Avatar, AvatarFallback } from '@/features/ui/components/avatar'
 import { Calendar, Clock, User } from 'lucide-react'
 import type { PostWithAuthor } from '@/types'
 

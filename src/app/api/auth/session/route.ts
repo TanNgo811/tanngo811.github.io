@@ -28,6 +28,10 @@ export async function GET(_: NextRequest) {
         ...user,
         profile: userData,
       }
+    }, {
+      headers: {
+        'Cache-Control': 'private, max-age=300', // Cache for 5 minutes
+      }
     })
   } catch (error) {
     console.error('Session error:', error)

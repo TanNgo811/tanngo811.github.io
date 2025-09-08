@@ -2,9 +2,9 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { Button } from '@/features/ui/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/features/ui/components/card'
+import { Badge } from '@/features/ui/components/badge'
 import { 
   Plus, 
   Edit, 
@@ -13,7 +13,7 @@ import {
   FileText,
   BarChart3
 } from 'lucide-react'
-import DeleteButton from '@/components/ui/delete-button'
+import DeleteButton from '@/features/ui/components/delete-button'
 
 async function getUserPosts(userId: string) {
   return await prisma.posts.findMany({

@@ -1,5 +1,5 @@
 import { PostCard } from './post-card'
-import { Spinner } from '@/components/ui/spinner'
+import { Spinner } from '@/features/ui/components/spinner'
 import type { PostWithAuthor } from '@/types'
 
 interface PostGridProps {

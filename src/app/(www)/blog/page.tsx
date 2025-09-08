@@ -1,13 +1,21 @@
 import { prisma } from '@/lib/prisma'
-import { PostGrid } from '@/components/blog/post-grid'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import { PostGrid } from '@/features/blog/components/post-grid'
+import { Button } from '@/features/ui/components/button'
+import { Badge } from '@/features/ui/components/badge'
 import { Search, Filter, TrendingUp } from 'lucide-react'
 
 async function getPublishedPosts() {
   return await prisma.posts.findMany({
     where: { published: true },
-    include: {
+    select: {
+      id: true,
+      author_id: true,
+      title: true,
+      content: true,
+      published: true,
+      slug: true,
+      created_at: true,
+      updated_at: true,
       users: {
         select: {
           first_name: true,
@@ -15,8 +23,13 @@ async function getPublishedPosts() {
         },
       },
       post_categories: {
-        include: {
-          categories: true,
+        select: {
+          categories: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
         },
       },
     },
@@ -28,7 +41,9 @@ async function getPublishedPosts() {
 
 async function getTopCategories() {
   const categories = await prisma.categories.findMany({
-    include: {
+    select: {
+      id: true,
+      name: true,
       _count: {
         select: {
           post_categories: true,
@@ -40,6 +55,7 @@ async function getTopCategories() {
         _count: 'desc',
       },
     },
+    take: 10, // Limit to top 10 categories
   })
   
   return categories
